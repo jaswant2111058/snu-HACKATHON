@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const schema = require("../model/model")
+const schema = require("../model/bussiness")
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 const cookie = require("cookie-parser");
