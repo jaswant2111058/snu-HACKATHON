@@ -15,11 +15,12 @@ app.set("view engine", "ejs");
 const login =  require("./routes/login")
 //const google =  require("./routes/google")
 const main =  require("./routes/waremanage")
+const payment = require("./routes/payment")
 app.use(cors())
 
 
 app.use("/",login);
-//app.use("/",google);
+app.use("/",payment);
 app.use("/",main);
 
 

@@ -13,7 +13,11 @@ const warehouse = require("../model/warehouse");
             {
                 data.push(produc[i].Commodity)
             }
-        res.send(data);
+            var a= [];
+            a=data;
+let unique = a.filter((item, i, ar) => ar.indexOf(item) === i);
+console.log(unique);
+        res.send(unique);
     })
 
     module.exports=router;

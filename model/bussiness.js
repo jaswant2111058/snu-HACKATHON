@@ -13,7 +13,6 @@ const userSchema = new mongoose.Schema({
         unique:[true,"email already exist"]
     },
     email_status:
-    
     {
         type:Boolean
     }, 
