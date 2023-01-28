@@ -114,9 +114,10 @@ router.post("/shipmentuser/search",async (req,res)=>{
         let produc = await warehouse.find({})
         
          function search(produc,comodity)
-         {   let array =[]
+         {   
+            let array =[]
 
-            for(let i=0;i<produc.length;i++)
+            for(let i=0;i<produc.length;i++) 
             {
                 for(let j=0;i<produc.storedProduct.length;j++)
                 {
@@ -141,7 +142,7 @@ router.post("/shipmentuser/search",async (req,res)=>{
     }
 })
 
-router.post("/shipmentuser/search",isLoggedIn, async (req,res)=>{
+router.post("/shipmentbussine/search", async (req,res)=>{
     try{ 
        const waredetail = req.body.waredetail 
        const wareIdfrom = waredetail.Country
@@ -165,7 +166,9 @@ router.post("/shipmentuser/search",isLoggedIn, async (req,res)=>{
 
     }
      catch{
+
         res.send("error").status(400);
+
        }
 }) 
 
