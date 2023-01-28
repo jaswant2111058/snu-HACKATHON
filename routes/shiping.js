@@ -5,7 +5,7 @@ const bodyParser= require("body-parser")
 const isLoggedIn = require("../middleware/middleware");
 const warehouse = require("../model/warehouse");
 const product = require("../model/product");
-const { find } = require("../model/warehouse");
+//const { find } = require("../model/warehouse");
 
 
 
