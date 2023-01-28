@@ -11,12 +11,12 @@ const warehouse = require("../model/warehouse");
         var data=[];
             for(let i=0;i<produc.length;i++)
             {
-                data.push(produc[i].Commodity)
+                data.push(produc[i].Category)
             }
             var a= [];
             a=data;
 let unique = a.filter((item, i, ar) => ar.indexOf(item) === i);
-console.log(unique);
+//console.log(unique);
         res.send(unique);
     })
 

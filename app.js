@@ -17,6 +17,8 @@ const login =  require("./routes/login")
 const main =  require("./routes/waremanage")
 const payment = require("./routes/payment");
 const bussiness = require('./routes/bussiness');
+const shiping = require('./routes/shiping');
+
 app.use(cors())
 
 
@@ -24,6 +26,7 @@ app.use("/",login);
 app.use("/",payment);
 app.use("/",main);
 app.use("/",bussiness);
+app.use("/",shiping);
 
 
 app.listen(port,()=>console.log("server is up....."));

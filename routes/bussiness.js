@@ -18,7 +18,7 @@ const product = require("../model/product");
            }
     })
     router.post("/adware", async (req,res)=>{
-       // try{ 
+        try{ 
             let ware = await bussiness.findOne({email:req.body.email})
         
              const dlt=
@@ -29,28 +29,26 @@ const product = require("../model/product");
              }
              const usr = new warehouse(dlt)
              await usr.save()     
-          //   const product = await product.find({Country:req.body.Country})
-           // res.send(product);
            
            
             const detail ={ 
                 wareId:req.body.wareId,
                 Country:req.body.Country
             }
-            ware=ware.ownedware.push(detail)
+            ware=ware.ownedware.concat(detail)
 
              await bussiness.updateOne({wareId:req.body.email},{ownedware:ware})
              
              const product = req.body.product
             let warecam = await warehouse.findOne({wareId:req.body.wareId})
             
-            warecam.storedProduct.push(product);
-                await warehouse.updateOne({wareId:req.body.wareId},{storedProduct:ware})
+            warecam = warecam.storedProduct.concat(product);
+                await warehouse.updateOne({wareId:req.body.wareId},{storedProduct:warecam})
                 let main = await warehouse.find({})
              res.send(main) 
-       // }
-        //    catch{
-        //     res.send("error").status(400);
-        //    }
+       }
+           catch{
+            res.send("error").status(400);
+           }
 }) 
     module.exports=router;
