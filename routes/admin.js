@@ -7,12 +7,12 @@ const admin = require("../model/admin");
 
 
     router.post("/request/admin", async (req,res)=>{
-        let admin = await admin.find({})
-        admin=admin.requests[admin.requests.length-1]
+        let adm = await admin.find({})
+        adm=adm.requests[adm.requests.length-1]
 
         //calculated price
 
-        res.send(admin);
+        res.send(adm);
     })
 
     router.post("/request/verification", async (req,res)=>{

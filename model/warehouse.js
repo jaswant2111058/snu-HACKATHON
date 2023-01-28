@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         type:Number
     },
     storedProduct : {
-          type:Array
+          type:[{comodity:String},{quantity:Number}]
       },   
   });
   

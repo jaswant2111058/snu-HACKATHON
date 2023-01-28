@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer")
-
+require('dotenv').config();
 function sendmail( email)
 {
    const random = Math.floor(Math.random() * 99999) + 10000;
@@ -9,7 +9,7 @@ function sendmail( email)
    service: 'gmail',
    auth: {
      user: "jkstar0123@gmail.com",
-     pass: process.env.EMAIL_PASS,
+     pass: "mxzqoaojndfjqplx"
    }
  })
  var mailOptions = {

@@ -28,14 +28,14 @@ router.post('/signup', async (req, res) => {
       const usr = new schema(detail)
       const adnew = await usr.save();
       console.log(otp)
-      res.send({ msg: "signup successful redirect to the login page" })
+      res.send({ msg: "otp has been sent" })
     }) 
     
 }
 
   catch
   {
-    res.status(400).send({ msg: "email is all ready register" + "<html><br><br><a href='/'>return<a></html>" });
+    res.status(400).send({ msg: "email is all ready register" });
   }
 
 })
@@ -71,14 +71,14 @@ router.post("/login", async (req, res) => {
     const lpassword = req.body.password
 
     const semail = await schema.findOne({email: lemail })
-    if (semail && semail.email_status === true) {
+    if (semail && semail.email_status === false) {
       bcrypt.compare(lpassword, semail.password, function(err, rs){
         if(err)
         {
           res.send({msg:"kuchh error hai bro"})
         }
         if (!rs) {
-
+ 
           res.send({ msg: "password not match" });
         }
         else {

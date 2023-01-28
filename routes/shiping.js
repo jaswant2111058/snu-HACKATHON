@@ -94,7 +94,6 @@ router.post("/shipmentuser/category", async (req,res)=>{
 
 router.post("/shipmentuser/comodity",async (req,res)=>{
     try{  
-      
         let produc = await product.find({Category:req.body.Category})
         var data=[];
             for(let i=0;i<produc.length;i++)
@@ -113,40 +112,36 @@ let unique = a.filter((item, i, ar) => ar.indexOf(item) === i);
     }
 })
 router.post("/shipmentuser/search",async (req,res)=>{
-    try{  
-        const comodity = req.body.Commodity
+      
+        const commo = req.body.Commodity
         let produc = await warehouse.find({})
+
         
-         function search(produc,comodity)
+       // console.log(resultObject)
+
+       // res.send(produc[1].storedProduct[2].comodity)
+     function search(pro,com)
          {   
             let array =[]
 
-            for(let i=0;i<produc.length;i++) 
+            for(let i=0;i<pro.length;i++) 
             {
-                for(let j=0;i<produc.storedProduct.length;j++)
-                {
-                    if(comodity==produc[i].storedProduct[j].Commodity)
+            const resultObject = search(com, pro[i].storedProduct);
+                    if(resultObject)
                     {
-                           array.push(produc[i])
-                            
+                        array.push(resultObject);
                     }
-                    else if(i==produc.length-1&&j==produc.storedProduct.length-1)
-                    {
-                        return array;
-                    }
-
-                }
             }
-        }
-        const found = search(produc,comodity);
-        res.send(found);
+            return array;
+        
+        
     } 
-    catch{
-     res.send("error").status(400);
-    }
+     const found = search(produc,commo);
+     res.send(found);
+   
 })
 
-router.post("/shipmentbussine/search", async (req,res)=>{
+router.post("/shipmentbussine/searches", async (req,res)=>{
     try{ 
        const waredetail = req.body.waredetail 
        const wareIdfrom = waredetail.Country

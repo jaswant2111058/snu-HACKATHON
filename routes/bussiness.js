@@ -17,6 +17,18 @@ const product = require("../model/product");
             res.send("error").status(400);
            }
     })
+    router.post("/bussiness/wareId", async (req,res)=>{
+        try{ 
+
+         const ware = await warehouse.findOne({wareId:req.body.wareId})
+              res.send({msg:ware})    
+
+        }
+        catch{
+         res.send("error").status(400);
+        }
+ })
+
     router.post("/adware", async (req,res)=>{
         try{ 
             let ware = await bussiness.findOne({email:req.body.email})
