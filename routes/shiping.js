@@ -69,19 +69,22 @@ const product = require("../model/product");
            }
 }) 
 
-router.post("/shipmentuser/category", async (req,res)=>{
+router.get("/shipmentuser/category", async (req,res)=>{
     try{  
-        let produc = await product.find({})
-        var data=[];
-            for(let i=0;i<produc.length;i++)
-            {
-                data.push(produc[i].Category)
-            }
-            var a= [];
-            a=data;
-let unique = a.filter((item, i, ar) => ar.indexOf(item) === i);
-//console.log(unique);
-        res.send(unique);
+        let produc = ["02_meat_and_edible_meat_offal",
+            "03_fish_crustaceans_molluscs_aquatic_invertebrates_ne",
+            "04_dairy_products_eggs_honey_edible_animal_product_nes",
+            "05_products_of_animal_origin_nes",
+            "06_live_trees_plants_bulbs_roots_cut_flowers_etc",
+            "07_edible_vegetables_and_certain_roots_and_tubers",
+            "08_edible_fruit_nuts_peel_of_citrus_fruit_melons",
+            "09_coffee_tea_mate_and_spices",
+            "10_cereals",
+            "11_milling_products_malt_starches_inulin_wheat_glute",
+            "12_oil_seed_oleagic_fruits_grain_seed_fruit_etc_ne"
+            ]
+       
+        res.send(produc);
 
     } 
     catch{
@@ -89,7 +92,7 @@ let unique = a.filter((item, i, ar) => ar.indexOf(item) === i);
     }
 })
 
-router.post("/shipmentuser/comodity",async (req,res)=>{
+router.get("/shipmentuser/comodity",async (req,res)=>{
     try{  
         let produc = await product.find({Category:req.body.Category})
         var data=[];

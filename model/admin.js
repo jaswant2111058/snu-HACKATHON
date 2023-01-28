@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
         type:Boolean
     },
  
-    upComingWork : {
+    requests: {
           type:Array
       },
   });
