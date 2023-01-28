@@ -119,14 +119,14 @@ router.post("/shipmentuser/search",async (req,res)=>{
         
        // console.log(resultObject)
 
-       // res.send(produc[1].storedProduct[2].comodity)
-     function search(pro,com)
+        res.send(produc.length)
+     function search(produc,com)
          {   
             let array =[]
 
-            for(let i=0;i<pro.length;i++) 
+            for(let i=0;i<produc.length;i++) 
             {
-            const resultObject = search(com, pro[i].storedProduct);
+            const resultObject = search(com, produc[i].storedProduct);
                     if(resultObject)
                     {
                         array.push(resultObject);
