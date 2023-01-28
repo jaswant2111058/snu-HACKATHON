@@ -7,7 +7,7 @@ const warehouse = require("../model/warehouse");
 
 
     router.get("/waredetail", async (req,res)=>{
-        let produc = await product.find({})
+        let produc = await product.find({}) 
         var data=[];
             for(let i=0;i<produc.length;i++)
             {

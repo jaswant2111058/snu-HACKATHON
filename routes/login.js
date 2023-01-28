@@ -12,9 +12,8 @@ router.use(cookie());
 router.use(bodyParser.urlencoded({ extended: true }));
 const sendmail = require("../nodemailer/mailer");
 const bcrypt = require("bcrypt");
-
-
-
+const cors = require("cors")
+app.use(cors())
 
 //signup post
 
@@ -68,7 +67,7 @@ router.post("/login", async (req, res) => {
 
   try {
     const lemail = req.body.email
-    const lpassword = req.body.password
+    const lpassword = req.body.password 
 
     const semail = await schema.findOne({email: lemail })
     if (semail && semail.email_status === false) {
@@ -95,7 +94,7 @@ router.post("/login", async (req, res) => {
       
     }
     else
-      res.send({ msg: "Email is not register" + "<html><br><br><a href='/'>signup<a></html>" })
+      res.send({ msg: "Email is not register"})
   }
 
   catch (e) {

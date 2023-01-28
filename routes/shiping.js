@@ -116,15 +116,18 @@ router.post("/shipmentuser/search",async (req,res)=>{
         const commo = req.body.Commodity
         let produc = await warehouse.find({})
 
-        
+       const msg= {msg:produc.length}
        // console.log(resultObject)
 
-        res.send(produc.length)
-     function search(produc,com)
-         {   
+        
+       
             let array =[]
 
-            for(let i=0;i<produc.length;i++) 
+            produc.forEach(
+                {
+                    
+                }
+            ) 
             {
             const resultObject = search(com, produc[i].storedProduct);
                     if(resultObject)
@@ -132,12 +135,9 @@ router.post("/shipmentuser/search",async (req,res)=>{
                         array.push(resultObject);
                     }
             }
-            return array;
-        
-        
-    } 
-     const found = search(produc,commo);
-     res.send(found);
+            
+    // const found = search(produc,commo);
+     res.send(array);
    
 })
 
