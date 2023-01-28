@@ -69,7 +69,7 @@ const product = require("../model/product");
            }
 }) 
 
-router.get("/shipmentuser/category", async (req,res)=>{
+router.post("/shipmentuser/category", async (req,res)=>{
     try{  
         let produc = ["02_meat_and_edible_meat_offal",
             "03_fish_crustaceans_molluscs_aquatic_invertebrates_ne",
@@ -92,8 +92,9 @@ router.get("/shipmentuser/category", async (req,res)=>{
     }
 })
 
-router.get("/shipmentuser/comodity",async (req,res)=>{
+router.post("/shipmentuser/comodity",async (req,res)=>{
     try{  
+      
         let produc = await product.find({Category:req.body.Category})
         var data=[];
             for(let i=0;i<produc.length;i++)
@@ -169,9 +170,7 @@ router.post("/shipmentbussine/search", async (req,res)=>{
 
     }
      catch{
-
         res.send("error").status(400);
-
        }
 }) 
 

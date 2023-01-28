@@ -29,9 +29,7 @@ const product = require("../model/product");
              }
              const usr = new warehouse(dlt)
              await usr.save()     
-           
-           
-            const detail ={ 
+                const detail ={ 
                 wareId:req.body.wareId,
                 Country:req.body.Country
             }
