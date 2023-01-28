@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema({
     email_status:
     {
         type:Boolean
-    }, 
+    },
+    otp:String, 
     ownedware : {
           type:Array
       },

@@ -7,7 +7,7 @@ const warehouse = require("../model/warehouse");
 const product = require("../model/product");
 
 
-    router.post("/bussiness",isLoggedIn, async (req,res)=>{
+    router.post("/bussiness", async (req,res)=>{
            try{ 
             const ware = await bussiness.findOne({email:req.body.email})
                  res.send({msg:ware.ownedware})    
@@ -17,17 +17,18 @@ const product = require("../model/product");
             res.send("error").status(400);
            }
     })
-    router.post("/adware",isLoggedIn, async (req,res)=>{
-        try{ 
+    router.post("/adware", async (req,res)=>{
+       // try{ 
             let ware = await bussiness.findOne({email:req.body.email})
         
              const dlt=
              {  wareId:req.body.wareId,
-                capacity:Number(req.body.capacity),
+                Capacity:Number(req.body.Capacity),
                 Country:req.body.Country,
                 freeSpace:Number(req.body.freeSpace)
              }
-             await warehouse.save({dlt})     
+             const usr = new warehouse(dlt)
+             await usr.save()     
           //   const product = await product.find({Country:req.body.Country})
            // res.send(product);
            
@@ -38,11 +39,18 @@ const product = require("../model/product");
             }
             ware=ware.ownedware.push(detail)
 
-             await bussiness.updateOne({email:req.body.email},{ownedware:ware})
-           
-        }
-           catch{
-            res.send("error").status(400);
-           }
+             await bussiness.updateOne({wareId:req.body.email},{ownedware:ware})
+             
+             const product = req.body.product
+            let warecam = await warehouse.findOne({wareId:req.body.wareId})
+            
+            warecam.storedProduct.push(product);
+                await warehouse.updateOne({wareId:req.body.wareId},{storedProduct:ware})
+                let main = await warehouse.find({})
+             res.send(main) 
+       // }
+        //    catch{
+        //     res.send("error").status(400);
+        //    }
 }) 
     module.exports=router;

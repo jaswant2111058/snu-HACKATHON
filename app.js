@@ -15,13 +15,15 @@ app.set("view engine", "ejs");
 const login =  require("./routes/login")
 //const google =  require("./routes/google")
 const main =  require("./routes/waremanage")
-const payment = require("./routes/payment")
+const payment = require("./routes/payment");
+const bussiness = require('./routes/bussiness');
 app.use(cors())
 
 
 app.use("/",login);
 app.use("/",payment);
 app.use("/",main);
+app.use("/",bussiness);
 
 
 app.listen(port,()=>console.log("server is up....."));
